@@ -1,0 +1,29 @@
+# À intégrer dans le virtual host HTTPS du sous-domaine, une fois le certificat créé.
+# Adapter les chemins de certificat à ceux générés sur le serveur.
+server {
+    listen 443 ssl;
+    server_name transferts.pierre-coutherut.fr;
+    ssl_certificate /etc/letsencrypt/live/transferts.pierre-coutherut.fr/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/transferts.pierre-coutherut.fr/privkey.pem;
+    client_max_body_size 2049m;
+    client_body_timeout 3600s;
+
+    # Les liens de transfert sont des secrets : ne pas les écrire dans les access logs.
+    access_log off;
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_request_buffering off;
+        proxy_buffering off;
+        proxy_read_timeout 3600s;
+        proxy_send_timeout 3600s;
+    }
+}
+server {
+    listen 80;
+    server_name transferts.pierre-coutherut.fr;
+    return 301 https://$host$request_uri;
+}

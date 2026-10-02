@@ -2,7 +2,7 @@
 
 Une application autonome à installer sur le serveur Node.js de Pierre Coutherut, pour le domaine `transferts.pierre-coutherut.fr`.
 
-**Pour l’hébergement Web / Node.js Infomaniak : suivre [INSTALLATION-INFOMANIAK.md](INSTALLATION-INFOMANIAK.md) et utiliser `.env.infomaniak.example`.** Ce profil utilise le SMTP de `contact@redstone-media.fr` et le port transmis par le Manager. Les exemples Nginx/systemd ci-dessous concernent un serveur administré personnellement.
+**Pour l’hébergement Web / Node.js Infomaniak : suivre [INSTALLATION-INFOMANIAK.md](INSTALLATION-INFOMANIAK.md) et utiliser `.env.infomaniak.example`.** Ce profil utilise les paramètres de messagerie renseignés sur le serveur et le port transmis par le Manager. Les exemples Nginx/systemd ci-dessous concernent un serveur administré personnellement.
 
 ## Inclus
 

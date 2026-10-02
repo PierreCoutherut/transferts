@@ -1,0 +1,26 @@
+{
+  "name": "pierre-transferts",
+  "version": "1.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "password": "node scripts/password.mjs",
+    "cleanup": "node scripts/cleanup.mjs",
+    "admin-link": "node scripts/admin-link.mjs"
+  },
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1",
+    "helmet": "^8.1.0",
+    "multer": "^2.0.2",
+    "nodemailer": "^10.0.13"
+  }
+}

@@ -1,0 +1,25 @@
+# Adapter User/Group, WorkingDirectory et ExecStart à ton serveur.
+# DATA_DIR=/var/lib/pierre-transferts dans .env ; ce dossier appartient à l'utilisateur transferts.
+[Unit]
+Description=Pierre Coutherut - Transferts
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=transferts
+Group=transferts
+WorkingDirectory=/opt/pierre-transferts
+EnvironmentFile=/opt/pierre-transferts/.env
+ExecStart=/usr/bin/node /opt/pierre-transferts/server.mjs
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/pierre-transferts
+
+[Install]
+WantedBy=multi-user.target
